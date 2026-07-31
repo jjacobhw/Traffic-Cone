@@ -1,5 +1,11 @@
-# Traffic Cone
-Inference-Time Compute for LLM Reasoning and Planning: Guardrails and Permissions for Benchmark and Insights
+# Traffic Cone: An Inference-Time Compute Benchmark for LLM Reasoning and Planning With Guardrails and Permissions
+
+## Motivation:
+Prior research suggests that large language models (LLMs) cannot reliably evaluate the correctness of their own intermediate reasoning steps. This limitation may become increasingly consequential as inference-time search grows deeper. Typically seen in common-sense reasoning tasks, extended reasoning can improve performance on difficult problems by allowing a model to generate, compare, and refine multiple candidate solutions, but it can also cause the context window to accumulate redundant and irrelevant information, including abandoned branches, incorrect hypotheses, superseded intermediate results, and other forms of garbage data.
+
+This can create context pollution that dilutes attention to task-relevant information and degrades the model’s ability to reason effectively at critical stages, which also impairs its ability to self-verify. As the context window becomes increasingly cluttered, the model becomes more likely to introduce errors and become less capable of identifying and correcting them. Undetected errors can then propagate into subsequent steps, further contaminating the reasoning process and potentially producing a compounding decline in reliability as search depth increases, which can have nasty side effects for users in critical systems.
+
+Despite the growing use of extended inference and search-based reasoning, it remains unclear when accumulated reasoning clutter begins to harm performance, which types of contextual information are most disruptive, and how these effects interfere with self-evaluation. Setting guardrails for these testbenches can help identify when these errors occur and assess the clutter to minimize fallout. 
 
 ## Setup
 
@@ -58,4 +64,4 @@ export HF_TOKEN=<your_huggingface_token>
    ./setup.sh
    ```
 
-   This unzips `LLMs_Planning.zip`, sets the `VAL`/`PR2` environment variables for the planner tools, and creates/activates the `sys2bench` Conda environment from `sys2bench.yaml`. See [datasets/Sys2Bench/README.md](datasets/Sys2Bench/README.md) for details.
+   This unzips `LLMs_Planning.zip`, sets the `VAL`/`PR2` environment variables for the planner tools, and creates/activates the `sys2bench` Conda environment from `sys2bench.yaml`.
